@@ -8,4 +8,5 @@ public class MyInformationClass {
     int imgthumbid;
     String maintext;
     String subtext;
+
 }

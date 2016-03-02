@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">recyclerview</string>
+    <array name="spinnerarray">
+        <item>Add-Bottom</item>
+        <item>Add-Top</item>
+        <item>Remove-Bottom</item>
+        <item>Remove-Top</item>
+    </array>
 </resources>

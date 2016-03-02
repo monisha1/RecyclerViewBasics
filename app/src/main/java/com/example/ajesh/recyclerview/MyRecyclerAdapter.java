@@ -61,4 +61,34 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
              imagethumb=(ImageView)itemView.findViewById(R.id.imgthumb);
         }
     }
+    public void additembottom(MyInformationClass object)
+    {
+
+        myinformation.add(object);
+        //if the list is {a,b,c},and we inserted c, then we should notify the adapter that the position
+        // we inserted is c,ie the last position which is size of list(3)-1;
+        notifyItemInserted(myinformation.size()-1);
+    }
+    public void additemtop(MyInformationClass object)
+    {
+        myinformation.add(object);
+        //if the list is {a,b,c},and we inserted c, then we should notify the adapter that the position
+        // we inserted is c,ie the last position which is size of list(3)-1;
+        notifyItemInserted(myinformation.size()-1);
+    }
+    public void removeitembottom()
+    {
+        if(!myinformation.isEmpty()) {
+            myinformation.remove(myinformation.size() - 1);
+            notifyItemRemoved(myinformation.size() - 1);
+        }
+    }
+    public void removeitemtop()
+    {
+        if(!myinformation.isEmpty()) {
+            myinformation.remove(0);
+            notifyItemRemoved(0);
+        }
+    }
+
 }
