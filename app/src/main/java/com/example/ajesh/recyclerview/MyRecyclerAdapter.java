@@ -79,8 +79,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     public void removeitembottom()
     {
         if(!myinformation.isEmpty()) {
-            myinformation.remove(myinformation.size() - 1);
+
             notifyItemRemoved(myinformation.size() - 1);
+            myinformation.remove(myinformation.size() - 1);
         }
     }
     public void removeitemtop()

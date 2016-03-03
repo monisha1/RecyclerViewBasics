@@ -6,4 +6,5 @@
         <item>Remove-Bottom</item>
         <item>Remove-Top</item>
     </array>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
