@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:title="delete" android:id="@+id/iddelete"
         android:icon="@mipmap/ic_delete_white" app:showAsAction="always"
-
-        />
+       />
+    <item android:title="spinner" android:id="@+id/idspinner"
+        app:actionViewClass="android.widget.Spinner" app:showAsAction="always"/>
 
 </menu>

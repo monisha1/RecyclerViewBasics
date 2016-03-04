@@ -1,7 +1,9 @@
 package com.example.ajesh.recyclerview;
 
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     int number=0;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 itemtoadd.maintext="Item"+ String.valueOf(number);
                 itemtoadd.subtext="subtext";
                 myRecycleAdapter.additembottom(itemtoadd);
+
                 number=number+1;
 
             }
@@ -63,12 +68,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.recyclermenu, menu);
-           return true;
+        MenuItem item = menu.findItem(R.id.idspinner);
+        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+        spinner.setBackgroundColor(Color.parseColor("#ffffff"));
+        String[] choose={"Add 10 item","Remove 10items"};
+        SpinnerAdapter mSpinnerAdapter= new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item,choose);
+        spinner.setAdapter(mSpinnerAdapter); // set the adapter to provide layout of rows and content
+        spinner.setOnItemSelectedListener(itemSelectedListener); // set the listener, to perform actions based on item selection
+        return true;
     }
 
     @Override
@@ -83,7 +99,41 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(myRecyclerView,"No item to Remove",Snackbar.LENGTH_SHORT).show();
                 }
                 break;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
+    private AdapterView.OnItemSelectedListener itemSelectedListener=new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(position==0)
+            {
+                MyInformationClass myInformationClass=new MyInformationClass();
+                List<MyInformationClass> list=new ArrayList<>(10);
+                for(int i=0;i<10;i++)
+                {
+                    myInformationClass=new MyInformationClass();
+                    myInformationClass.maintext="BulkListItem"+ String.valueOf(number);
+                    myInformationClass.subtext="subtext";
+                    list.add(myInformationClass);
+                    number=number+1;
+                }
+                myRecycleAdapter.addlist(list);
+
+            }
+            if(position==1)
+            {
+                myRecycleAdapter.removeitemall();
+                number=0;
+            }
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
 }

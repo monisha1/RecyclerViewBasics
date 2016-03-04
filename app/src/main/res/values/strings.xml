@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">recyclerview</string>
     <array name="spinnerarray">
-        <item>Add-Bottom</item>
-        <item>Add-Top</item>
-        <item>Remove-Bottom</item>
-        <item>Remove-Top</item>
+        <item>Add-10 item</item>
+        <item>Remove 20 item</item>
+
     </array>
     <string name="title_activity_main2">Main2Activity</string>
 </resources>

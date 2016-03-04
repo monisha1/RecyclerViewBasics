@@ -20,6 +20,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
 
     List<MyInformationClass> myinformation= Collections.emptyList();
+    List<MyInformationClass> myinformationtoadd= Collections.emptyList();
 
     public MyRecyclerAdapter(List<MyInformationClass> myinfo) {
         this.myinformation=myinfo;
@@ -71,10 +72,10 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     }
     public void additemtop(MyInformationClass object)
     {
-        myinformation.add(object);
+        myinformation.add(0,object);
         //if the list is {a,b,c},and we inserted c, then we should notify the adapter that the position
         // we inserted is c,ie the last position which is size of list(3)-1;
-        notifyItemInserted(myinformation.size()-1);
+        notifyItemInserted(0);
     }
     public void removeitembottom()
     {
@@ -84,12 +85,28 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
             myinformation.remove(myinformation.size() - 1);
         }
     }
-    public void removeitemtop()
+    public void removeitemall()
     {
         if(!myinformation.isEmpty()) {
-            myinformation.remove(0);
-            notifyItemRemoved(0);
+            //granular removal,instead of removing all the items at once,its removed one by one
+            int sizedata=myinformation.size();
+            for(int i=0;i<sizedata;i++) {
+                myinformation.remove(0);
+                notifyItemRemoved(0);
+            }
         }
+    }
+    public void addlist(List<MyInformationClass> list)
+    {
+
+        this.myinformationtoadd=list;
+        for(MyInformationClass singleobject:myinformationtoadd)
+        {
+            myinformation.add(singleobject);
+            notifyItemInserted(myinformation.size()-1);
+        }
+        myinformationtoadd.clear();
+
     }
 
 }
