@@ -70,6 +70,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         // we inserted is c,ie the last position which is size of list(3)-1;
         notifyItemInserted(myinformation.size()-1);
     }
+    public void deleteitem(int position)
+    {
+        notifyItemRemoved(position);
+        myinformation.remove(position);
+
+    }
     public void additemtop(MyInformationClass object)
     {
         myinformation.add(0,object);
