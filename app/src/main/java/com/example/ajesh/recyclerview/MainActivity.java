@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+//This is the change
+
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
             @Override
