@@ -29,7 +29,7 @@ import java.util.zip.Inflater;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView myRecyclerView;
-    private RecyclerView.LayoutManager myLayoutManager;
+    private LinearLayoutManager myLayoutManager;
     private MyRecyclerAdapter myRecycleAdapter;
     List<MyInformationClass>myDataset=new ArrayList<>();
     int number=0;
@@ -59,7 +59,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        myRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int itemno=myLayoutManager.findFirstVisibleItemPosition();
+                if(itemno==0)additems();
+            }
+        });
+
     }
+
      private void additems()
     {
         MyInformationClass myInformationClass=new MyInformationClass();
