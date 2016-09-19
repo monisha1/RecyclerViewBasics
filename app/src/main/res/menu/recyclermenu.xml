@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:title="delete" android:id="@+id/iddelete"
-        android:icon="@mipmap/ic_delete_white" app:showAsAction="always"
+        android:icon="@mipmap/ic_delete_white" app:showAsAction="ifRoom"
        />
     <item android:title="spinner" android:id="@+id/idspinner"
         app:actionViewClass="android.widget.Spinner" app:showAsAction="always"/>

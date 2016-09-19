@@ -13,19 +13,14 @@ import org.w3c.dom.Text;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Ajesh on 11/1/2015.
- */
+
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder> {
 
 
     List<MyInformationClass> myinformation= Collections.emptyList();
-    List<MyInformationClass> myinformationtoadd= Collections.emptyList();
-
     public MyRecyclerAdapter(List<MyInformationClass> myinfo) {
         this.myinformation=myinfo;
     }
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -43,12 +38,10 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         holder.Subtext.setText(myinformation.get(position).subtext);
        // holder.imagethumb.setImageResource(myinformation.get(position).imgthumbid);
     }
-
     @Override
     public int getItemCount() {
         return myinformation.size();
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView Maintext;
@@ -62,69 +55,13 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
              imagethumb=(ImageView)itemView.findViewById(R.id.imgthumb);
         }
     }
-    public void additembottom(MyInformationClass object)
+    public void addlisttop(List<MyInformationClass> list)
     {
-
-        myinformation.add(object);
-        //if the list is {a,b,c},and we inserted c, then we should notify the adapter that the position
-        // we inserted is c,ie the last position which is size of list(3)-1;
-        notifyItemInserted(myinformation.size()-1);
-    }
-    public void deleteitem(int position)
-    {
-        notifyItemRemoved(position);
-        myinformation.remove(position);
-
-    }
-    public void additemtop(MyInformationClass object)
-    {
-        myinformation.add(0,object);
-        //if the list is {a,b,c},and we inserted c, then we should notify the adapter that the position
-        // we inserted is c,ie the last position which is size of list(3)-1;
-        notifyItemInserted(0);
-    }
-    public void removeitembottom()
-    {
-        if(!myinformation.isEmpty()) {
-
-            notifyItemRemoved(myinformation.size() - 1);
-            myinformation.remove(myinformation.size() - 1);
-        }
-    }
-    public void removeitemall()
-    {
-        if(!myinformation.isEmpty()) {
-            //granular removal,instead of removing all the items at once,its removed one by one
-            int sizedata=myinformation.size();
-            for(int i=0;i<sizedata;i++) {
-                myinformation.remove(0);
-                notifyItemRemoved(0);
-            }
-        }
-    }
-    public void addlist(List<MyInformationClass> list)
-    {
-
-        this.myinformationtoadd=list;
-        for(MyInformationClass singleobject:myinformationtoadd)
-        {
-            myinformation.add(singleobject);
-            notifyItemInserted(myinformation.size()-1);
-        }
-        myinformationtoadd.clear();
-
-    }
-    public void addlistbottom(List<MyInformationClass> list)
-    {
-
-        this.myinformationtoadd=list;
         for(int i=0;i<list.size();i++)
         {
-            myinformation.add(i,myinformationtoadd.get(i));
+            myinformation.add(i,list.get(i));
             notifyItemInserted(i);
         }
-        myinformationtoadd.clear();
-
     }
 
 }
