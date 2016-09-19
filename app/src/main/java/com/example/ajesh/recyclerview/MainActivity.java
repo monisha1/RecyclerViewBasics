@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-//This is the change
+
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.idspinner);
         Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
         spinner.setBackgroundColor(Color.parseColor("#ffffff"));
-        String[] choose={"Add 10 item","Remove 10items"};
+        String[] choose={"Add 10 item(bottom)","Remove 10items","Add 10 item(top)"};
         SpinnerAdapter mSpinnerAdapter= new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item,choose);
         spinner.setAdapter(mSpinnerAdapter); // set the adapter to provide layout of rows and content
@@ -168,6 +168,21 @@ public class MainActivity extends AppCompatActivity {
             {
                 myRecycleAdapter.removeitemall();
                 number=0;
+            }
+            if(position==2)
+            {
+                MyInformationClass myInformationClass=new MyInformationClass();
+                List<MyInformationClass> list=new ArrayList<>(10);
+                for(int i=0;i<10;i++)
+                {
+                    myInformationClass=new MyInformationClass();
+                    myInformationClass.maintext="BulkListItem"+ String.valueOf(number+10);
+                    myInformationClass.subtext="subtext";
+                    list.add(myInformationClass);
+                    number=number+1;
+                }
+                myRecycleAdapter.addlistbottom(list);
+
             }
 
         }

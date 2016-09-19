@@ -114,5 +114,17 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         myinformationtoadd.clear();
 
     }
+    public void addlistbottom(List<MyInformationClass> list)
+    {
+
+        this.myinformationtoadd=list;
+        for(int i=0;i<list.size();i++)
+        {
+            myinformation.add(i,myinformationtoadd.get(i));
+            notifyItemInserted(i);
+        }
+        myinformationtoadd.clear();
+
+    }
 
 }
